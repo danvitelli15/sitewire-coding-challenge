@@ -1,17 +1,21 @@
 import type { ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchUserLogins, type User } from 'sitewire-interview-core';
+import type { User } from 'sitewire-interview-core';
+import { userLoginsQuery } from './queries.ts';
 import './UserCard.css';
 
-function UserCard({ user }: { user: User }) {
+type UserCardProps = {
+  user: User;
+  isSelected: boolean;
+  onSelect: (user: User) => void;
+};
+
+function UserCard({ user, isSelected, onSelect }: UserCardProps) {
   const {
     data: userLogins,
     isPending,
     isError,
-  } = useQuery({
-    queryKey: ['logins', user.id],
-    queryFn: () => fetchUserLogins(user.id),
-  });
+  } = useQuery(userLoginsQuery(user.id));
 
   let loginCells: ReactNode;
   if (isPending) {
@@ -34,10 +38,17 @@ function UserCard({ user }: { user: User }) {
   }
 
   return (
-    <tr>
+    <tr className={isSelected ? 'user-card--selected' : undefined}>
       <td className="user-card__id">#{user.id}</td>
       <td className="user-card__name">
-        {user.first_name} {user.last_name}
+        <button
+          type="button"
+          className="user-card__select"
+          aria-pressed={isSelected}
+          onClick={() => onSelect(user)}
+        >
+          {user.first_name} {user.last_name}
+        </button>
       </td>
       <td>{user.email}</td>
       {loginCells}
