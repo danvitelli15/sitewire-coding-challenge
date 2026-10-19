@@ -1,4 +1,8 @@
+import type { Login } from './Login.ts';
+
 export type UserLogins = {
   user_id: number;
-  logins: { login_time: string; ip_v4: string }[];
+  // Sorted newest first.
+  logins: Login[];
+  last_login: Login | null;
 };

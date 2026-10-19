@@ -22,6 +22,8 @@ function App() {
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Last Login</th>
+                <th scope="col">Last Login IP</th>
               </tr>
             </thead>
             <tbody>
