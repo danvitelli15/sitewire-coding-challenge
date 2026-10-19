@@ -18,7 +18,8 @@ export async function apiFetch<T>(path: string): Promise<T> {
     } else if (!response.ok) {
       throw new Error(`GET ${path} failed with ${response.status}`);
     } else {
-      return response.json();
+      // Unchecked cast: we trust the API to return the documented shape.
+      return (await response.json()) as T;
     }
   }
 

@@ -1,3 +1,4 @@
 packages:
   - sitewire-interview-dashboard
   - sitewire-interview-core
+  - sitewire-interview-cli
