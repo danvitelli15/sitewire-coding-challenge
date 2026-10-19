@@ -1,7 +1,6 @@
-import { API_BASE_URL } from './apiBaseUrl.ts'
+import { apiFetch } from './apiFetch.ts'
 import type { UserLogins } from './types/UserLogins.ts'
 
 export async function fetchUserLogins(userId: number): Promise<UserLogins> {
-  const response = await fetch(`${API_BASE_URL}/users/${userId}/relationships/logins`)
-  return response.json()
+  return apiFetch<UserLogins>(`/users/${userId}/relationships/logins`)
 }

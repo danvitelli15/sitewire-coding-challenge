@@ -9,3 +9,4 @@ An append-only trace of conscious design/structure decisions made while working 
 - Rendered users as grid-aligned list rows (`UserCard`) rather than a full data table, keeping a lightweight layout that can grow columns for login time and IP.
 - Prefer native semantic HTML elements over ARIA roles on generic elements (e.g. real list/table markup instead of `<div role="listitem">`).
 - Rendered users as a `<table>` since each row is the same set of columns; row selection will drive a stateful side panel showing all of a user's logins (chosen over rows that expand inline).
+- Routed all API requests through a single `apiFetch` wrapper in core, creating one bottleneck where failure handling, retries, and timeouts will live instead of being repeated in each endpoint function.
