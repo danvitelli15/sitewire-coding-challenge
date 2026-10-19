@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
-import { fetchUsers, type User } from 'sitewire-interview-core'
-import UserCard from './UserCard.tsx'
+import { useEffect, useState } from 'react';
+import { fetchUsers, type User } from 'sitewire-interview-core';
+import UserCard from './UserCard.tsx';
 
 function App() {
-  const [users, setUsers] = useState<User[]>([])
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetchUsers().then(setUsers)
-  }, [])
+    fetchUsers().then(setUsers);
+  }, []);
 
   return (
     <>
@@ -28,7 +28,7 @@ function App() {
         </tbody>
       </table>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

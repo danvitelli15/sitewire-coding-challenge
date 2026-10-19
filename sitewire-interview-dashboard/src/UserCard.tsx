@@ -1,5 +1,5 @@
-import type { User } from 'sitewire-interview-core'
-import './UserCard.css'
+import type { User } from 'sitewire-interview-core';
+import './UserCard.css';
 
 function UserCard({ user }: { user: User }) {
   return (
@@ -10,7 +10,7 @@ function UserCard({ user }: { user: User }) {
       </td>
       <td>{user.email}</td>
     </tr>
-  )
+  );
 }
 
-export default UserCard
+export default UserCard;

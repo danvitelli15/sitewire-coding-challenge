@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "pnpm --filter sitewire-interview-dashboard dev",
     "build": "pnpm -r build",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devEngines": {
     "packageManager": {
@@ -13,5 +15,8 @@
       "version": "^11.2.2",
       "onFail": "download"
     }
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10"
   }
 }
