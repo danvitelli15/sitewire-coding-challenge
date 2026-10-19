@@ -7,3 +7,7 @@
   font-weight: 600;
   color: var(--text-h);
 }
+
+.user-card__error {
+  color: var(--error);
+}

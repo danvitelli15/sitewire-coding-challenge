@@ -3,6 +3,8 @@
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
+  --error: #b42318;
+  --error-bg: #fef3f2;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -21,6 +23,8 @@
     --text-h: #f3f4f6;
     --bg: #16171d;
     --border: #2e303a;
+    --error: #f97066;
+    --error-bg: #2b1614;
   }
 }
 
@@ -57,4 +61,13 @@ h1 {
 .user-table th {
   font-weight: 600;
   color: var(--text-h);
+}
+
+.error-banner {
+  padding: 16px;
+  border: 1px solid var(--error);
+  border-radius: 4px;
+  background: var(--error-bg);
+  color: var(--error);
+  font-weight: 600;
 }

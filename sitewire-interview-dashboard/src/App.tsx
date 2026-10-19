@@ -3,7 +3,11 @@ import { fetchUsers } from 'sitewire-interview-core';
 import UserCard from './UserCard.tsx';
 
 function App() {
-  const { data: users = [], isPending } = useQuery({
+  const {
+    data: users = [],
+    isPending,
+    isError,
+  } = useQuery({
     queryKey: ['users'],
     queryFn: fetchUsers,
   });
@@ -13,6 +17,11 @@ function App() {
       <h1>Login Dashboard</h1>
       {isPending ? (
         <p>Loading…</p>
+      ) : isError ? (
+        <div className="error-banner" role="alert">
+          Unable to access user data. Loading failed after repeated retry
+          attempts.
+        </div>
       ) : (
         <>
           <p>Total users: {users.length}</p>
