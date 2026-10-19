@@ -41,3 +41,20 @@ h1 {
   color: var(--text-h);
   margin: 32px 0 4px;
 }
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.user-table th {
+  font-weight: 600;
+  color: var(--text-h);
+}

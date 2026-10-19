@@ -13,9 +13,20 @@ function App() {
     <>
       <h1>Login Dashboard</h1>
       <p>Total users: {users.length}</p>
-      {users.map((user) => (
-        <UserCard key={user.id} user={user} />
-      ))}
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </tbody>
+      </table>
     </>
   )
 }

@@ -7,3 +7,5 @@ An append-only trace of conscious design/structure decisions made while working 
 - Extracted the API fetch functions and types into a framework-agnostic `sitewire-interview-core` package, so the same data logic can back both the dashboard and a future CLI.
 - `sitewire-interview-core` ships raw TypeScript source (`exports` points at `src/index.ts`) with no build step; Vite compiles it for the dashboard, and Node's native type stripping can run it directly for the CLI.
 - Rendered users as grid-aligned list rows (`UserCard`) rather than a full data table, keeping a lightweight layout that can grow columns for login time and IP.
+- Prefer native semantic HTML elements over ARIA roles on generic elements (e.g. real list/table markup instead of `<div role="listitem">`).
+- Rendered users as a `<table>` since each row is the same set of columns; row selection will drive a stateful side panel showing all of a user's logins (chosen over rows that expand inline).
