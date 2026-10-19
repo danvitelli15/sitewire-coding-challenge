@@ -10,3 +10,4 @@ An append-only trace of conscious design/structure decisions made while working 
 - Prefer native semantic HTML elements over ARIA roles on generic elements (e.g. real list/table markup instead of `<div role="listitem">`).
 - Rendered users as a `<table>` since each row is the same set of columns; row selection will drive a stateful side panel showing all of a user's logins (chosen over rows that expand inline).
 - Routed all API requests through a single `apiFetch` wrapper in core, creating one bottleneck where failure handling, retries, and timeouts will live instead of being repeated in each endpoint function.
+- `apiFetch` retries 500 responses with backoff (`0, 500ms, 1s, 2s, 4s` before each of up to 5 attempts) and throws if every attempt fails. The API's failures are random rather than load-related, so backoff isn't strictly needed here, but it's the safe default to avoid hammering a struggling server.
