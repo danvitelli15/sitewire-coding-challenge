@@ -6,6 +6,7 @@
   --error: #b42318;
   --error-bg: #fef3f2;
   --selected-bg: #f2f0f5;
+  --warning: #f79009;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;

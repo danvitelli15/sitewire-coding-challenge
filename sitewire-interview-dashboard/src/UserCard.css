@@ -8,10 +8,6 @@
   color: var(--text-h);
 }
 
-.user-card__error {
-  color: var(--error);
-}
-
 .user-card--selected {
   background: var(--selected-bg);
 }
