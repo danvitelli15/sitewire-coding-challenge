@@ -197,6 +197,12 @@ importers:
 
   .: {}
 
+  sitewire-interview-core:
+    devDependencies:
+      typescript:
+        specifier: ~6.0.2
+        version: 6.0.3
+
   sitewire-interview-dashboard:
     dependencies:
       react:
@@ -205,6 +211,9 @@ importers:
       react-dom:
         specifier: ^19.2.8
         version: 19.3.1(react@19.3.1)
+      sitewire-interview-core:
+        specifier: workspace:*
+        version: link:../sitewire-interview-core
     devDependencies:
       '@types/node':
         specifier: ^24.13.3
