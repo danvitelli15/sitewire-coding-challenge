@@ -6,23 +6,21 @@ const API_BASE_URL = 'https://fake-users-api.vercel.app';
 const BACKOFF_MS = [0, 500, 1000, 2000, 4000];
 
 export async function apiFetch<T>(path: string): Promise<T> {
-  let attempt = 0;
-  let response: Response;
-
-  do {
-    await wait(BACKOFF_MS[attempt]);
-    response = await fetch(`${API_BASE_URL}${path}`);
-    attempt++;
+  for (const [index, delay] of BACKOFF_MS.entries()) {
+    await wait(delay);
+    const response = await fetch(`${API_BASE_URL}${path}`);
     console.debug(
-      `[apiFetch] GET ${path} -> ${response.status} (attempt ${attempt}/${BACKOFF_MS.length})`,
+      `[apiFetch] GET ${path} -> ${response.status} (attempt ${index + 1}/${BACKOFF_MS.length})`,
     );
-  } while (response.status === 500 && attempt < BACKOFF_MS.length);
 
-  if (!response.ok) {
-    throw new Error(
-      `GET ${path} failed with ${response.status} after ${attempt} attempts`,
-    );
+    if (response.status === 500) {
+      continue;
+    } else if (!response.ok) {
+      throw new Error(`GET ${path} failed with ${response.status}`);
+    } else {
+      return response.json();
+    }
   }
 
-  return response.json();
+  throw new Error(`GET ${path} failed after ${BACKOFF_MS.length} attempts`);
 }
